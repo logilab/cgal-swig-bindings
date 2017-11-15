@@ -39,5 +39,6 @@ script:
     -DPYTHON_INCLUDE_DIR=/home/travis/virtualenv/python3.5.3/include/python3.5m
     -DPYTHON_LIBRARY=/opt/python/3.5.3/lib/libpython3.5m.so
     -DPYTHON_EXECUTABLE=/home/travis/virtualenv/python3.5.3/bin/python
+    -DPYTHON_MODULE_PATH=/home/travis/virtualenv/python3.5.3/site-packages
     .
   - make install -j2 && ctest -j2 --output-on-failure
