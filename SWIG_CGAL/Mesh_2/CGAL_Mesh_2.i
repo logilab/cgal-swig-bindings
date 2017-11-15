@@ -11,6 +11,7 @@
 Decl_void_type()
 
 SWIG_CGAL_add_java_loadLibrary(CGAL_Mesh_2)
+SWIG_CGAL_package_common()
 
 %import  "SWIG_CGAL/Common/Macros.h"
 %import  "SWIG_CGAL/Kernel/CGAL_Kernel.i"
@@ -30,7 +31,7 @@ SWIG_CGAL_add_java_loadLibrary(CGAL_Mesh_2)
 %include "SWIG_CGAL/Mesh_2/Triangulation_conformer_2.h"
 %import  "SWIG_CGAL/Triangulation_2/CGAL_Triangulation_2.i"
 
-%pragma(java) jniclassimports=%{import CGAL.Kernel.Ref_int; import CGAL.Triangulation_2.Ref_Locate_type_2; import CGAL.Triangulation_2.Constrained_Delaunay_triangulation_2; import CGAL.Triangulation_2.Constrained_Delaunay_triangulation_plus_2; import CGAL.Kernel.Point_2; import CGAL.Kernel.Segment_2;  import CGAL.Kernel.Triangle_2; import java.util.Iterator; import CGAL.Triangulation_2.Constraint; import java.util.Collection;%}
+%pragma(java) jniclassimports=%{import CGAL.Kernel.Ref_int; import CGAL.Triangulation_2.Ref_Locate_type_2; import CGAL.Triangulation_2.Constrained_Delaunay_triangulation_2; import CGAL.Triangulation_2.Constrained_Delaunay_triangulation_plus_2; import CGAL.Kernel.Point_2; import CGAL.Kernel.Polygon_2; import CGAL.Kernel.Segment_2;  import CGAL.Kernel.Triangle_2; import java.util.Iterator; import CGAL.Triangulation_2.Constraint; import java.util.Collection;%}
 %pragma(java) moduleimports  =%{import CGAL.Triangulation_2.Constrained_Delaunay_triangulation_2; import CGAL.Triangulation_2.Constrained_Delaunay_triangulation_plus_2; import java.util.Iterator;import CGAL.Kernel.Point_2;%}
 
 
@@ -114,6 +115,15 @@ declare_conforming_global_functions(Mesh_2_Constrained_Delaunay_triangulation_2_
 declare_conforming_global_functions(Mesh_2_Constrained_Delaunay_triangulation_plus_2_SWIG_wrapper)
 declare_refine_global_functions(Mesh_2_Constrained_Delaunay_triangulation_2_SWIG_wrapper, Criteria_wrapper<DM2_C>)
 declare_refine_global_functions(Mesh_2_Constrained_Delaunay_triangulation_plus_2_SWIG_wrapper, Criteria_wrapper<DM2_C_plus>)
+
+
+%include "CGAL/version.h"
+#if CGAL_VERSION_NR > 1040601000
+%typemap(javaimports)  Mesh_2_parameters %{import CGAL.Kernel.Point_2; import java.util.Iterator;%}
+%include "SWIG_CGAL/Mesh_2/parameters.h"
+declare_lloyd_2_global_functions(Mesh_2_Constrained_Delaunay_triangulation_2_SWIG_wrapper)
+declare_lloyd_2_global_functions(Mesh_2_Constrained_Delaunay_triangulation_plus_2_SWIG_wrapper)
+#endif
 
 #ifdef SWIGJAVA
 %include "SWIG_CGAL/Mesh_2/java_extensions.i"

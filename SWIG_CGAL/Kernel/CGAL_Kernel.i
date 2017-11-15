@@ -12,6 +12,7 @@ Decl_void_type()
 
 
 SWIG_CGAL_add_java_loadLibrary(CGAL_Kernel)
+SWIG_CGAL_package_common()
 
 %import  "SWIG_CGAL/Common/Macros.h"
 %import  "SWIG_CGAL/Common/Iterator.h"
@@ -113,9 +114,8 @@ SWIG_CGAL_input_iterator_typemap_in_python_extra_function(Polygon_2::Polygon_2)
 %include "SWIG_CGAL/Kernel/Iso_rectangle_2.h"
 %include "SWIG_CGAL/Kernel/Iso_cuboid_3.h"
 
-
-const Origin           ORIGIN;
-const Null_vector      NULL_VECTOR;
+const Origin      ORIGIN;
+const Null_vector NULL_VECTOR;
 %{
 const Origin      ORIGIN      = Origin();
 const Null_vector NULL_VECTOR = Null_vector();
@@ -129,6 +129,10 @@ const Null_vector NULL_VECTOR = Null_vector();
 %pythoncode %{
 Vector_2.__rmul__ = Vector_2.__mul__
 Vector_3.__rmul__ = Vector_3.__mul__
+Vector_2.__idiv__ = Vector_2.__div__
+Vector_3.__idiv__ = Vector_3.__div__
+Vector_2.__truediv__ = Vector_2.__div__
+Vector_3.__truediv__ = Vector_3.__div__
 %}
 #endif
 

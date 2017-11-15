@@ -11,6 +11,7 @@
 Decl_void_type()
 
 SWIG_CGAL_add_java_loadLibrary(CGAL_Box_intersection_d)
+SWIG_CGAL_package_common()
 
 %import  "SWIG_CGAL/Common/Macros.h"
 %import  "SWIG_CGAL/Kernel/CGAL_Kernel.i"
@@ -20,6 +21,7 @@ SWIG_CGAL_add_java_loadLibrary(CGAL_Box_intersection_d)
 //include files
 %{
   #include <SWIG_CGAL/Common/Iterator.h>
+  #include <vector>
 %}
 
 %pragma(java) jniclassimports=
@@ -76,7 +78,6 @@ SWIG_CGAL_input_iterator_typemap_in_python_extra_function(box_self_intersection_
   #include <SWIG_CGAL/Box_intersection_d/enum.h>
   #include <SWIG_CGAL/Common/Wrapper_iterator_helper.h>
   #include <CGAL/box_intersection_d.h>
-  #include <vector>
 %}
 
 SWIG_CGAL_declare_identifier_of_template_class(Collect_ids_callback_2,Collect_ids_callback<2>)
